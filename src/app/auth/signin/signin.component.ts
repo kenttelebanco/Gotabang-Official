@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
   submitted: boolean = false;
 
   signinform = this.fb.group({
-    username: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   })
 
@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
   });
 
   recoverPassword = this.fb.group({
-    email: ['', [Validators.required, Validators.email,Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
   })
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }

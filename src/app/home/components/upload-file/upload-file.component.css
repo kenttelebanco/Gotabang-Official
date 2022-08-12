@@ -1,0 +1,17 @@
+img{
+  width: 20%;
+  align-items: center;
+}
+
+.text-center{
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.upload-card{
+  border-style: dashed;
+  border-color: rgb(193, 190, 190);
+  padding: 10px;
+}

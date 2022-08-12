@@ -19,6 +19,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat'
 
 @NgModule({
   declarations: [
@@ -38,6 +40,17 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "AIzaSyBM-LFSIhLFRpKM63cWpJeWWJwdNQKcgqo",
+        authDomain: "gotabang.firebaseapp.com",
+        projectId: "gotabang",
+        storageBucket: "gotabang.appspot.com",
+        messagingSenderId: "160977774494",
+        appId: "1:160977774494:web:2449ac00278a754122d88f"
+      }
+    ),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
