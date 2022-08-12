@@ -22,6 +22,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { FirebaseService } from './auth/firebase.service';
+import { AlertFileComponent } from './alert-file/alert-file.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FirebaseService } from './auth/firebase.service';
     NavbarComponent,
     SigninComponent,
     UploadDialogComponent,
+    AlertFileComponent,
   ],
   imports: [
     BrowserModule,
