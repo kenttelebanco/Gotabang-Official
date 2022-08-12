@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './route/app-routing.module';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
+import { FirebaseService } from './auth/firebase.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { AuthService } from './auth/auth.service';
     ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    FirebaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
