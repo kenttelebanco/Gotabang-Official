@@ -31,14 +31,21 @@ mat-checkbox{
   padding-right: 5em;
 }
 
-button {
+
+img{
+  width: 40%;
+}
+
+.mat-button-login{
   width: 90%;
   padding: 6px;
   margin: 5% 0%;
 }
 
-img{
-  width: 40%;
+.mat-button-recover{
+  width: 90%;
+  padding: 6px;
+  margin: 5px 0px;
 }
 
 .link-primary{
