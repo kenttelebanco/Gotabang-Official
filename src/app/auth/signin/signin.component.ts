@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserRegister } from 'src/app/shared/model/auth.interface';
+import { Subject,takeUntil } from 'rxjs';
+import { UserLogin, UserRegister } from 'src/app/shared/model/auth.interface';
 import { AuthService } from '../auth.service';
 import { FirebaseService } from '../firebase.service';
 
@@ -12,13 +14,16 @@ import { FirebaseService } from '../firebase.service';
 })
 export class SigninComponent implements OnInit {
 
+  private unsubscribe = new Subject<void>();
   openRegister = true;
   openRecover = true;
   submitted: boolean = false;
   isSignedIn = false;
   userRegister = {} as UserRegister;
+  userLogin = {} as UserLogin;
+  data = {} as User;
 
-
+// ------- USER FORM
   signinform = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -38,8 +43,18 @@ export class SigninComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private fireB: FirebaseService) { }
 
+  ngOnInit(): void {
+    // Emit something to stop all Observables
+    this.unsubscribe.next();
+    // Complete the notifying Observable to remove it
+    this.unsubscribe.complete();
+  }
 
-  get f() { return this.registerform.controls; }
+  // -------- GENERAL AUTH
+
+  get f() {
+    return this.registerform.controls;
+  }
 
   MustMatch(controlName: string, matchingControlName: string) {return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
@@ -50,16 +65,44 @@ export class SigninComponent implements OnInit {
         } else {matchingControl.setErrors(null);}
   }}
 
-  ngOnInit(): void {
-  }
-
-  login() : void {
+ // -------- FOR USER REGISTRATION
+  async login(email: string, password: string) : Promise<void> {
     if(this.signinform.valid){
+      this.userLogin.email = email;
+      this.userLogin.password = password;
+      (await this.fireB.signInUser(this.userLogin)).pipe(takeUntil(this.unsubscribe)).subscribe(async (result) => {
+        console.log(result);
+        if(result.data == null){
+          this.router.navigate(['/signin']);
+          alert("Invalid Email or Password. Try Again.")}
+        else if(result.data !== null){
+            this.router.navigate(['/homescreen/dashboard']);
+        }
+
+        this.isSignedIn = result!.success;
+        if(this.isSignedIn){
+
+          (await this.fireB.logUser(result.data!.id)).subscribe((user)=>{
+            //console.log(this.fireB.currentUser);
+            this.fireB.updateUser(user!)
+
+          });
+        }
+      })
     this.authService.isLoggedIn=true;
-     this.router.navigate(["/signin"]);
     }else {
       alert("Invalid credentials");
     }
+  }
+
+  clickToLogin() : void {
+    this.openRegister = true;
+    this.openRecover = true;
+  }
+
+  // -------- FOR USER REGISTRATION
+  clickToRegister() : void {
+    this.openRegister = false;
   }
 
   async register(email:string, password:string) : Promise<void> {
@@ -72,13 +115,15 @@ export class SigninComponent implements OnInit {
 
     this.isSignedIn = output.success;
     this.authService.isLoggedIn=true;
-
-     this.router.navigate(["/homescreen/dashboard"]);
+    alert("Successfully Registered");
+    this.openRegister = true;
+    this.openRecover = true;
     }else {
       alert("Invalid credentials");
     }
   }
 
+  // -------- FOR USER RECOVERY
   recover() : void {
     if(this.recoverPassword.valid){
       this.openRecover = true;
@@ -87,16 +132,8 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  clickToRegister() : void {
-    this.openRegister = false;
-  }
-
-  clickToLogin() : void {
-    this.openRegister = true;
-    this.openRecover = true;
-  }
-
   clickToRecover() : void {
     this.openRecover = false;
   }
+
 }

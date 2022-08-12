@@ -21,7 +21,7 @@
           <a (click)="clickToRecover()" class="forgot-pwd">Forgot pwd?</a>
         </div>
         <div class="d-flex align-items-center">
-          <button class="mat-button-login" [disabled]="!signinform.valid" (click)="login()" mat-raised-button>Login</button>
+          <button class="mat-button-login" [disabled]="!signinform.valid" (click)="login(email.value,password.value)" mat-raised-button>Login</button>
         </div>
         <div class="d-flex align-items-center register">
           <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
@@ -83,7 +83,7 @@
         </mat-error>
       </mat-form-field>
       <div class="d-flex align-items-center">
-        <button class="mat-button-recover" [disabled]="!recoverPassword.valid" (click)="recover()" mat-raised-button>Login</button>
+        <button class="mat-button-recover" [disabled]="!recoverPassword.valid" (click)="recover()" mat-raised-button>Send</button>
         <button class="mat-button-recover" (click)="clickToLogin()" mat-raised-button>Cancel</button>
       </div>
     </form>
