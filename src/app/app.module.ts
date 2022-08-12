@@ -13,6 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './route/app-routing.module';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
+import { UploadDialogComponent } from './home/components/upload-dialog/upload-dialog.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -22,6 +28,7 @@ import { AuthService } from './auth/auth.service';
     ScanFileComponent,
     NavbarComponent,
     SigninComponent,
+    UploadDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +38,10 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

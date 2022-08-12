@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gotabang": {
+      "hosting": {
+        "gotabang-official": [
+          "gotabang"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gotabang"
+  }
+}
