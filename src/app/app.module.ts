@@ -11,6 +11,8 @@ import { AngularModule } from './shared/angular/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './route/app-routing.module';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { AppRoutingModule } from './route/app-routing.module';
     HomeComponent,
     UploadFileComponent,
     ScanFileComponent,
-    NavbarComponent
+    NavbarComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { AppRoutingModule } from './route/app-routing.module';
     ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

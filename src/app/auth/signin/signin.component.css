@@ -1,0 +1,69 @@
+/*CARD*/
+mat-card {
+  margin: 6% 30%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: rgb(51, 54, 69);
+}
+
+mat-card.app-login, mat-card.app-register {
+  width: 90%;
+  height: 70%;
+}
+
+mat-card.app-recover {
+  width: 90%;
+  height: 40%;
+}
+
+/*FORM*/
+mat-form-field {
+  padding: 10px 10px;
+  display: block;
+  text-decoration: none;
+}
+
+mat-form-field, .register, .submenu {
+  font-size: medium;
+}
+
+mat-checkbox{
+  padding-right: 5em;
+}
+
+button {
+  width: 90%;
+  padding: 6px;
+  margin: 5% 0%;
+}
+
+img{
+  width: 40%;
+}
+
+.link-primary{
+  cursor: pointer;
+  color: rgb(39, 126, 240);
+}
+
+.forgot-pwd{
+  text-decoration: none;
+  position: absolute;
+  right: 30px;
+}
+
+/*PAGE*/
+.login-page {
+  background: linear-gradient(rgba(37, 36, 36, 0.5), rgba(37, 36, 36, 0.5)), url("https://www.dslrpros.com/media/dslrpros-blog/wp-content/uploads/2018/11/SAR-cliff-stretcher-rescue.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.submenu{
+  display: flex;
+  padding: 0 10px 0 11px;
+}
+
+
+

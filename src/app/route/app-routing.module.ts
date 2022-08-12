@@ -5,12 +5,13 @@ import { ScanFileComponent } from '../home/components/scan-file/scan-file.compon
 import { UploadFileComponent } from '../home/components/upload-file/upload-file.component';
 import { HomeComponent } from '../home/home.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { SigninComponent } from '../auth/signin/signin.component';
 
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'homescreen/dashboard', pathMatch: 'full' },
-  // {path: 'signin', component: SigninComponent},
+  {path: '', redirectTo: 'signin', pathMatch: 'full' },
+  {path: 'signin', component: SigninComponent},
   {path: 'upload', component: UploadFileComponent},
   {path: 'homescreen', component:  NavbarComponent,
     children: [
