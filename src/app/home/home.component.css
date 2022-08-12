@@ -1,0 +1,37 @@
+mat-tab-group {
+  align-items: center;
+}
+
+/*JUMBOTRON*/
+.library-header{
+  background-image: url("https://www.outsideonline.com/wp-content/uploads/2021/10/drone-take-off_h.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  height: 40%;
+
+}
+
+div.header-mask{
+  background-color: rgba(37, 76, 104, 0.615);
+  height: 100%;
+  display: flex;
+
+}
+.display-4, .display-sub{
+  position: absolute;
+  font-kerning: normal;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.display-4{
+  top: 18%;
+  left: 27%;
+  font-size: 50px;
+}
+
+.display-sub{
+  top: 30%;
+  left: 32%;
+  font-size: 15px;
+}
