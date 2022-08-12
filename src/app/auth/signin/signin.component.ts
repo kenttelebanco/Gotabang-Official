@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserRegister } from 'src/app/shared/model/auth.interface';
 import { AuthService } from '../auth.service';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,6 +15,9 @@ export class SigninComponent implements OnInit {
   openRegister = true;
   openRecover = true;
   submitted: boolean = false;
+  isSignedIn = false;
+  userRegister = {} as UserRegister;
+
 
   signinform = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -31,7 +36,7 @@ export class SigninComponent implements OnInit {
     email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
   })
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private fireB: FirebaseService) { }
 
 
   get f() { return this.registerform.controls; }
@@ -51,15 +56,23 @@ export class SigninComponent implements OnInit {
   login() : void {
     if(this.signinform.valid){
     this.authService.isLoggedIn=true;
-     this.router.navigate(["/homescreen/dashboard"]);
+     this.router.navigate(["/signin"]);
     }else {
       alert("Invalid credentials");
     }
   }
 
-  register() : void {
+  async register(email:string, password:string) : Promise<void> {
     if(this.registerform.valid){
-      this.authService.isLoggedIn=true;
+    this.userRegister.email = email;
+    this.userRegister.password = password;
+
+    var output = await this.fireB.registerUser(this.userRegister);
+    console.log(output);
+
+    this.isSignedIn = output.success;
+    this.authService.isLoggedIn=true;
+
      this.router.navigate(["/homescreen/dashboard"]);
     }else {
       alert("Invalid credentials");
