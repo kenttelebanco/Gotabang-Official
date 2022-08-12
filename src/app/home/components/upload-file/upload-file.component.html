@@ -1,1 +1,10 @@
-<p>upload-file works!</p>
+<div class="text-center">
+  <div class="upload-card">
+    <img src="assets/icons/upload.jpg">
+    <div class="upload-file">
+     <input class="form-control" type="file" (change)="upload($event)" accept="*.png.jpg" multiple="multiple">
+     <button mat-flat-button (click)="uploadImage()" class="btn btn-success"color="primary">Upload</button>
+    </div>
+  </div>
+</div>
+
