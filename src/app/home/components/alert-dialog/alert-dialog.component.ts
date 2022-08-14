@@ -8,10 +8,15 @@ import { DialogData } from '../upload-file/upload-file.component';
   styleUrls: ['./alert-dialog.component.css']
 })
 export class AlertDialogComponent implements OnInit {
+  confirmAlert = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
+  }
+
+  onConfirm(){
+    this.confirmAlert= true;
   }
 
 }

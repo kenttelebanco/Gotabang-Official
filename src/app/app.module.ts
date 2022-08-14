@@ -22,7 +22,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { FirebaseService } from './auth/firebase.service';
-import { AlertFileComponent } from './home/components/alert-file/alert-file.component';
+import { AlertFileComponent } from './home/alert-file/alert-file.component';
 import { AlertDialogComponent } from './home/components/alert-dialog/alert-dialog.component';
 
 @NgModule({
