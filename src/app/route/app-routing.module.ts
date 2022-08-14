@@ -6,6 +6,7 @@ import { UploadFileComponent } from '../home/components/upload-file/upload-file.
 import { HomeComponent } from '../home/home.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SigninComponent } from '../auth/signin/signin.component';
+import { AlertFileComponent } from '../home/components/alert-file/alert-file.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component:  HomeComponent},
       { path: 'upload2', component:  UploadFileComponent},
-      { path: 'scan', component:  ScanFileComponent}
+      { path: 'scan', component:  ScanFileComponent},
+      { path: 'alert', component:  AlertFileComponent}
 
     ]}
   ];
