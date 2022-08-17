@@ -32,9 +32,8 @@ export class UploadFileComponent implements OnInit {
   }
 
   uploadImage(){
-    console.log(this.path)
-    this.af.upload("/files/data"+Math.random()+this.path,this.path
-    )
+    console.log('console: '+this.path)
+    this.af.upload("/files/data"+Math.random()+this.path, this.path)
     this.openDialog()
 
   }
