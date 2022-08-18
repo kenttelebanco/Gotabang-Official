@@ -6,6 +6,9 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { Observable } from 'rxjs';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { ApiService } from '../api.service';
+import { imageType } from '../imageType';
+import { jsonEval } from '@firebase/util';
 
 export interface DialogData {
   data: ' ';
@@ -19,7 +22,7 @@ export interface DialogData {
 
 export class UploadFileComponent implements OnInit {
   @Output() menuState!: String;
-
+  type : imageType[] = [];
   path!: String;
   lockUpload= true;
   task!: AngularFireUploadTask;
@@ -27,9 +30,19 @@ export class UploadFileComponent implements OnInit {
   percentage!: Observable<number>;
   snapshot!: Observable<any>;
   downloadURL!: String;
+  result: any;
+
+  imgType:any = [
+    {
+      Type: 'Flood'
+    },
+    {
+      Type: 'Fire'
+    }
+  ]
 
 
-  constructor(public dialog: MatDialog, private af: AngularFireStorage) {
+  constructor(public dialog: MatDialog, private af: AngularFireStorage, private apiService:ApiService) {
   }
 
   ngOnInit(): void {
@@ -46,6 +59,7 @@ export class UploadFileComponent implements OnInit {
 
   scanImage($event:any){
     var file = $event.target.files[0];
+    this.path = file;
     if (file!.type.split('/')[0] !== 'image') {
       console.error('unsupported file type');
       alert('Invalid Upload Format!')
@@ -77,8 +91,21 @@ export class UploadFileComponent implements OnInit {
   }
 
   uploadImage(){
-    this.af.upload("/test/data"+Math.random()+this.path, this.path)
-    this.openDialog();
+    this.apiService.classifyImage(this.downloadURL).subscribe(async response => {
+      this.type = response
+    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[0])){
+      console.log('Type: ', this.type)
+      console.log('Type2: ', this.imgType[0])
+      this.af.upload("flood/"+Math.random()+this.path, this.path)
+      this.openDialog();
+    }
+    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[1])){
+      console.log('Type: ', this.type)
+      console.log('Type2: ', this.imgType[1])
+      this.af.upload("fire/data"+Math.random()+this.path, this.path)
+      this.openDialog();
+    }
+    })
     }
 
 }
