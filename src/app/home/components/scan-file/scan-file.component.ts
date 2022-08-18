@@ -1,37 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Section } from 'src/app/shared/model/section';
 
 @Component({
   selector: 'scan-file',
   templateUrl: './scan-file.component.html',
-  styleUrls: ['./scan-file.component.css']
+  styleUrls: ['./scan-file.component.css'],
 })
 export class ScanFileComponent implements OnInit {
+
   folders: Section[] = [
     {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
+      icon: 'insert_photo',
+      name: 'Image',
+      info: 'this.upl.downloadURL',
     },
     {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
+      icon: 'calendar_today',
+      name: 'Created',
+      info: 'Created: 2022-08-18T04:57:39.056Z',
     },
     {
-      name: 'Work',
-      updated: new Date('1/28/16'),
+      icon: ' my_location',
+      name: 'Location',
+      info: 'Mandaue City, Cebu City, Philippines',
+    },
+    {
+      icon: 'folder',
+      name: 'Type',
+      info: 'Flood',
+    },
+    {
+      icon: 'warning',
+      name: 'Alert Level',
+      info: '2',
     },
   ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-  ];
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

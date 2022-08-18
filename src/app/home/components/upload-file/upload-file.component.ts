@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
@@ -14,19 +14,23 @@ export interface DialogData {
 @Component({
   selector: 'upload-file',
   templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.css']
+  styleUrls: ['./upload-file.component.css'],
 })
 
 export class UploadFileComponent implements OnInit {
+  @Output() menuState!: String;
+
   path!: String;
   lockUpload= true;
   task!: AngularFireUploadTask;
   taskRef!: AngularFireStorageReference;
   percentage!: Observable<number>;
   snapshot!: Observable<any>;
-  downloadURL="insert url";
+  downloadURL!: String;
 
-  constructor(public dialog: MatDialog, private af: AngularFireStorage) { }
+
+  constructor(public dialog: MatDialog, private af: AngularFireStorage) {
+  }
 
   ngOnInit(): void {
   }
@@ -40,23 +44,23 @@ export class UploadFileComponent implements OnInit {
     );
   }
 
-  async scanImage($event:any){
-    const file = $event.target.files[0];
+  scanImage($event:any){
+    var file = $event.target.files[0];
     if (file!.type.split('/')[0] !== 'image') {
       console.error('unsupported file type');
       alert('Invalid Upload Format!')
       this.lockUpload=true;
       return;}
     else {
-    const storage = getStorage();
-    const metadata = {
+    var storage = getStorage();
+    var metadata = {
       customMetadata: {
         'application': 'Gotabang',
         'activity': 'Image Processing'
       }
     };
 
-  const imageRef = ref(storage, 'images/' + file.name);
+  var imageRef = ref(storage, 'images/' + file.name);
   this.lockUpload=false;
   uploadBytesResumable(imageRef, file, metadata)
   .then((snapshot) => {
@@ -64,7 +68,7 @@ export class UploadFileComponent implements OnInit {
     console.log('File metadata:', snapshot.metadata);
     getDownloadURL(snapshot.ref).then((url) => {
       this.downloadURL = url;
-      console.log('File available at', url);
+      console.log("File Url: "+this.downloadURL);
     });
   }).catch((error) => {
     console.error('Upload failed', error);
@@ -76,5 +80,6 @@ export class UploadFileComponent implements OnInit {
     this.af.upload("/test/data"+Math.random()+this.path, this.path)
     this.openDialog();
     }
+
 }
 

@@ -1,4 +1,5 @@
 export interface Section {
+  icon: string;
   name: string;
-  updated: Date;
+  info: string;
 }
