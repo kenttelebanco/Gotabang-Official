@@ -2,9 +2,10 @@
   <div class="upload-card">
     <img src="assets/icons/upload.jpg">
     <div class="upload-file">
-     <input class="form-control" type="file" (change)="upload($event)" accept="*.png*.jpg" multiple="multiple">
-     <button mat-flat-button (click)="uploadImage()" class="btn btn-success"color="primary">Upload</button>
+     <input class="form-control" type="file" (change)="scanImage($event)" accept="*.png*.jpg" multiple="multiple">
+     <button mat-flat-button (click)="uploadImage()" [disabled]="lockUpload==true" class="btn btn-success" color="primary">Upload</button>
     </div>
   </div>
+  <p>Display Url: {{downloadURL}}</p>
 </div>
 

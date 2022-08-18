@@ -1,1 +1,35 @@
-<p>scan-file works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/images%2Fflood.jpg?alt=media&token=8689552e-4c42-44be-abfe-70a2c2c2aedc" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p class="img-name">Name: flood.png</p>
+    <p class="img-date">Created: 2022-08-18T04:57:39.056Z</p>
+    <p class="img-url">Img Url: https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/images%2Fflood.jpg?alt=media&token=84e0d47b-88b0-40d1-ace3-49d770fa3c9c</p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-list>
+  <div mat-subheader>Folders</div>
+  <mat-list-item *ngFor="let folder of folders">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <div mat-line>{{folder.name}}</div>
+    <div mat-line> {{folder.updated | date}} </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Notes</div>
+  <mat-list-item *ngFor="let note of notes">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <div mat-line>{{note.name}}</div>
+    <div mat-line> {{note.updated | date}} </div>
+  </mat-list-item>
+</mat-list>
+

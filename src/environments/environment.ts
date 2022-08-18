@@ -12,7 +12,7 @@ export const environment = {
     authDomain: 'gotabang.firebaseapp.com',
     messagingSenderId: '160977774494',
   },
-  production: false
+  production: true
 };
 
 /*
