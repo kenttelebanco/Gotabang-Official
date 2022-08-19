@@ -2,21 +2,37 @@ mat-tab-group {
   align-items: center;
 }
 
-/*JUMBOTRON*/
-.library-header{
+.about-content{
+  width: 50%;
+  margin-top: 100px;
+}
+
+.gotabang-header{
   background-image: url("https://www.outsideonline.com/wp-content/uploads/2021/10/drone-take-off_h.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   height: 40%;
+}
 
+.gotabang-about{
+  display: flex;
+  padding: 0px 45px;
+  margin-left: 18%;
+}
+
+div.header-mask, div.about-mask{
+  height: 100%;
+  display: flex;
 }
 
 div.header-mask{
   background-color: rgba(37, 76, 104, 0.615);
-  height: 100%;
-  display: flex;
-
 }
+
+div.about-mask{
+  background-color: rgba(72, 80, 85, 0.615);
+}
+
 .display-4, .display-sub{
   position: absolute;
   font-kerning: normal;
@@ -30,8 +46,17 @@ div.header-mask{
   font-size: 50px;
 }
 
+.display-3, .about-sub{
+  margin: 10px 10px 20px 25px;
+  width: 70%;
+}
+
 .display-sub{
   top: 30%;
   left: 32%;
   font-size: 15px;
+}
+
+img{
+  width: 45%;
 }

@@ -6,7 +6,7 @@ import { UploadFileComponent } from '../home/components/upload-file/upload-file.
 import { HomeComponent } from '../home/home.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SigninComponent } from '../auth/signin/signin.component';
-import { AlertFileComponent } from '../home/alert-file/alert-file.component';
+import { AlertFileComponent } from '../home/components/alert-file/alert-file.component';
 
 
 const routes: Routes = [

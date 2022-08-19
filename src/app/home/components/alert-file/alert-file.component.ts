@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/shared/model/hotlines';
-import { AlertDialogComponent } from '../components/alert-dialog/alert-dialog.component';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'alert-file',
