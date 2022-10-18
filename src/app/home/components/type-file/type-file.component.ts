@@ -1,14 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/shared/model/section';
 
 @Component({
-  selector: 'scan-file',
-  templateUrl: './scan-file.component.html',
-  styleUrls: ['./scan-file.component.css'],
+  selector: 'type-file',
+  templateUrl: './type-file.component.html',
+  styleUrls: ['./type-file.component.css']
 })
-export class ScanFileComponent implements OnInit {
+export class TypeFileComponent implements OnInit {
 
   folders: Section[] = [
+    {
+      icon: 'folder',
+      name: 'Type',
+      info: 'Flood',
+    },
     {
       icon: 'insert_photo',
       name: 'Image',
@@ -24,21 +29,10 @@ export class ScanFileComponent implements OnInit {
       name: 'Location',
       info: 'Mandaue City, Cebu City, Philippines',
     },
-    {
-      icon: 'folder',
-      name: 'Type',
-      info: 'Flood',
-    },
-    {
-      icon: 'warning',
-      name: 'Alert Level',
-      info: '2',
-    },
   ];
   constructor() {
    }
 
   ngOnInit(): void {
   }
-
 }

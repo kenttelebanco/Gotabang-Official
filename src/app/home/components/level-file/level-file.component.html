@@ -1,0 +1,22 @@
+<div class="level-file">
+    <mat-card-content>
+      <img mat-card-image src="https://cdn.dribbble.com/users/709274/screenshots/3450784/water_ball.gif">
+    </mat-card-content>
+
+  <mat-list>
+    <mat-list-item *ngFor="let folder of folders">
+      <mat-card class="info-card warning" *ngIf="folder.info === 'Critical Water Level'">
+      <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
+      <div mat-line>{{folder.name}} </div>
+      <div mat-line>{{folder.info}}</div>
+    </mat-card>
+
+      <mat-card class="info-card info" *ngIf="folder.info !== 'Critical Water Level'">
+        <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
+        <div mat-line>{{folder.name}} </div>
+        <div mat-line>{{folder.info}}</div>
+    </mat-card>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

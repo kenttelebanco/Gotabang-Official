@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScanFileComponent } from './scan-file.component';
+import { LevelFileComponent } from './level-file.component';
 
-describe('ScanFileComponent', () => {
-  let component: ScanFileComponent;
-  let fixture: ComponentFixture<ScanFileComponent>;
+describe('LevelFileComponent', () => {
+  let component: LevelFileComponent;
+  let fixture: ComponentFixture<LevelFileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScanFileComponent ]
+      declarations: [ LevelFileComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ScanFileComponent);
+    fixture = TestBed.createComponent(LevelFileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,53 @@
+mat-list{
+  margin: 25px 50px 0px 0px;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  padding-bottom: 20%;
+}
+
+mat-card-content{
+  max-height: 300px;
+  height: 500px;
+  margin: 10px 10px;
+  overflow: hidden;
+}
+
+:host ::ng-deep #mat-tab-content-0-1{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0%;
+}
+
+.info-card {
+  box-shadow: none;
+  text-shadow: none;
+  border-style: none;
+}
+
+.info-card.info {
+  background-color: rgb(226, 242, 247);
+  width: 80%;
+  height: 80%;
+}
+
+.info-card.warning {
+  background-color: rgb(255, 194, 194);
+  width: 80%;
+  height: 80%;
+}
+
+img {
+  width: 75%;
+  margin-left: 5%;
+}
+
+.level-file{
+  align-content: center;
+  margin: 0% 5% 0% 17%;
+  overflow: hidden;
+  height: 500px;
+}
