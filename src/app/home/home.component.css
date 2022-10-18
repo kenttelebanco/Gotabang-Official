@@ -1,5 +1,7 @@
 mat-tab-group {
   align-items: center;
+  overflow: hidden;
+
 }
 
 .about-content{

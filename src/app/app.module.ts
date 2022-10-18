@@ -22,20 +22,22 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { FirebaseService } from './auth/firebase.service';
 import { AlertDialogComponent } from './home/components/alert-dialog/alert-dialog.component';
-import { ScanFileComponent } from './home/components/scan-file/scan-file.component';
 import { AlertFileComponent } from './home/components/alert-file/alert-file.component';
+import { TypeFileComponent } from './home/components/type-file/type-file.component';
+import { LevelFileComponent } from './home/components/level-file/level-file.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UploadFileComponent,
-    ScanFileComponent,
     NavbarComponent,
     SigninComponent,
     UploadDialogComponent,
     AlertFileComponent,
     AlertDialogComponent,
+    TypeFileComponent,
+    LevelFileComponent,
   ],
   imports: [
     BrowserModule,
