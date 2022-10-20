@@ -6,18 +6,19 @@ import { HomeComponent } from '../home/home.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SigninComponent } from '../auth/signin/signin.component';
 import { AlertFileComponent } from '../home/components/alert-file/alert-file.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 
 const routes: Routes = [
 
   {path: '', redirectTo: 'signin', pathMatch: 'full' },
   {path: 'signin', component: SigninComponent},
-  {path: 'upload', component: UploadFileComponent},
-  {path: 'homescreen', component:  NavbarComponent,
+  {path: 'upload', component: UploadFileComponent, canActivate: [AuthGuard]},
+  {path: 'homescreen', component:  NavbarComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component:  HomeComponent},
-      { path: 'upload2', component:  UploadFileComponent},
-      { path: 'alert', component:  AlertFileComponent}
+      { path: 'dashboard', component:  HomeComponent, canActivate: [AuthGuard]},
+      { path: 'upload2', component:  UploadFileComponent,canActivate: [AuthGuard] },
+      { path: 'alert', component:  AlertFileComponent, canActivate: [AuthGuard]}
 
     ]}
   ];
@@ -28,6 +29,9 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers:[
+    AuthGuard
   ],
   declarations: [],
 
