@@ -44,9 +44,7 @@ export class SigninComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private fireB: FirebaseService) { }
 
   ngOnInit(): void {
-    // Emit something to stop all Observables
     this.unsubscribe.next();
-    // Complete the notifying Observable to remove it
     this.unsubscribe.complete();
   }
 
@@ -65,7 +63,7 @@ export class SigninComponent implements OnInit {
         } else {matchingControl.setErrors(null);}
   }}
 
- // -------- FOR USER REGISTRATION
+ // -------- FOR USER SIGNIN
   async login(email: string, password: string) : Promise<void> {
     if(this.signinform.valid){
       this.userLogin.email = email;
@@ -89,7 +87,7 @@ export class SigninComponent implements OnInit {
           });
         }
       })
-    this.authService.isLoggedIn=true;
+    this.authService.isLoggedIn!;
     }else {
       alert("Invalid credentials");
     }
@@ -114,7 +112,7 @@ export class SigninComponent implements OnInit {
     console.log(output);
 
     this.isSignedIn = output.success;
-    this.authService.isLoggedIn=true;
+    this.authService.isLoggedIn!;
     alert("Successfully Registered");
     this.openRegister = true;
     this.openRecover = true;
