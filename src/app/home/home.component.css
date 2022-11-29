@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-40px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 mat-tab-group {
+  margin-top: 18%;
   align-items: center;
   overflow: hidden;
+  color: white;
+}
 
+::ng-deep.mat-tab-label-content{
+  color: white;
 }
 
 .about-content{
@@ -9,43 +32,27 @@ mat-tab-group {
   margin-top: 100px;
 }
 
-.gotabang-header{
-  background-image: url("https://www.outsideonline.com/wp-content/uploads/2021/10/drone-take-off_h.jpg");
-  background-size:cover;
-  background-repeat: no-repeat;
-  height: 40%;
-}
-
 .gotabang-about{
-  display: flex;
   padding: 0px 45px;
-  margin-left: 18%;
-}
-
-div.header-mask, div.about-mask{
-  height: 100%;
   display: flex;
 }
 
-div.header-mask{
-  background-color: rgba(37, 76, 104, 0.615);
+.gotabang-header{
+ margin-top: 10%;
+ animation: fadeIn 5s;
 }
 
-div.about-mask{
-  background-color: rgba(72, 80, 85, 0.615);
-}
-
-.display-4, .display-sub{
-  position: absolute;
-  font-kerning: normal;
+.display-4, .display-sub, .gotabang-about{
   color: white;
   font-family: 'Montserrat', sans-serif;
+  margin: 0%;
 }
 
 .display-4{
   top: 18%;
   left: 27%;
-  font-size: 50px;
+  font-size: 90px;
+  font-family: 'Rubik Glitch', cursive;
 }
 
 .display-3, .about-sub{
@@ -59,6 +66,26 @@ div.about-mask{
   font-size: 15px;
 }
 
-img{
-  width: 45%;
+img.gotabang-icon{
+  width: 59%;
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: none;
+  overflow: hidden;
 }
+
+.header-mask{
+  margin: 10% 5% 0% 5%;
+}
+
+.scs-icon{
+  width: 5%;
+  padding: 0px 0px 12px 5px;
+}
+
+.usjr-icon{
+  width: 7%;
+}
+

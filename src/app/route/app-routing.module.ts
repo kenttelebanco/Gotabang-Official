@@ -13,7 +13,6 @@ const routes: Routes = [
 
   {path: '', redirectTo: 'signin', pathMatch: 'full' },
   {path: 'signin', component: SigninComponent},
-  {path: 'upload', component: UploadFileComponent, canActivate: [AuthGuard]},
   {path: 'homescreen', component:  NavbarComponent, canActivate: [AuthGuard],
     children: [
       { path: 'dashboard', component:  HomeComponent, canActivate: [AuthGuard]},
