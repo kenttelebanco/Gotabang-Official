@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Section } from 'src/app/shared/model/section';
 
 @Component({
@@ -8,6 +8,7 @@ import { Section } from 'src/app/shared/model/section';
 })
 export class TypeFileComponent implements OnInit {
 
+  @Input() displayImage = '';
   folders: Section[] = [
     {
       icon: 'folder',
@@ -30,9 +31,11 @@ export class TypeFileComponent implements OnInit {
       info: 'Mandaue City, Cebu City, Philippines',
     },
   ];
-  constructor() {
-   }
 
+  constructor() {
+  }
   ngOnInit(): void {
+
   }
 }
+

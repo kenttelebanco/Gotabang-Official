@@ -17,7 +17,7 @@
 }
 
 mat-tab-group {
-  margin-top: 18%;
+  margin-top: 15%;
   align-items: center;
   overflow: hidden;
   color: white;
@@ -30,16 +30,6 @@ mat-tab-group {
 .about-content{
   width: 50%;
   margin-top: 100px;
-}
-
-.gotabang-about{
-  padding: 0px 45px;
-  display: flex;
-}
-
-.gotabang-header{
- margin-top: 10%;
- animation: fadeIn 5s;
 }
 
 .display-4, .display-sub, .gotabang-about{
@@ -66,6 +56,20 @@ mat-tab-group {
   font-size: 15px;
 }
 
+.gotabang-about{
+  margin: 0% 0% 0% 15%;
+  display: flex;
+}
+
+.gotabang-header{
+ margin-top: 10%;
+ animation: fadeIn 5s;
+}
+
+.header-mask{
+  margin: 10% 5% 0% 5%;
+}
+
 img.gotabang-icon{
   width: 59%;
   position: absolute;
@@ -74,10 +78,6 @@ img.gotabang-icon{
   animation: float 6s ease-in-out infinite;
   box-shadow: none;
   overflow: hidden;
-}
-
-.header-mask{
-  margin: 10% 5% 0% 5%;
 }
 
 .scs-icon{

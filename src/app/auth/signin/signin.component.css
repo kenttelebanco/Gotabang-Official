@@ -65,8 +65,8 @@ mat-checkbox{
   background: linear-gradient(rgba(37, 36, 36, 0.5), rgba(37, 36, 36, 0.5)), url("https://www.dslrpros.com/media/dslrpros-blog/wp-content/uploads/2018/11/SAR-cliff-stretcher-rescue.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
-
+  height: 1000px;
+  display: block ruby;
 }
 
 .submenu{

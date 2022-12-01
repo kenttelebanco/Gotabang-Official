@@ -3,12 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { ApiService } from '../api.service';
 import { imageType } from '../imageType';
-import { jsonEval } from '@firebase/util';
 
 export interface DialogData {
   data: ' ';
@@ -22,6 +21,7 @@ export interface DialogData {
 
 export class UploadFileComponent implements OnInit {
   @Output() menuState!: String;
+  @Output() newItemEvent = new EventEmitter<string>();
   type : imageType[] = [];
   path!: String;
   lockUpload= true;
@@ -29,7 +29,7 @@ export class UploadFileComponent implements OnInit {
   taskRef!: AngularFireStorageReference;
   percentage!: Observable<number>;
   snapshot!: Observable<any>;
-  downloadURL!: String;
+  downloadURL!: string;
   result: any;
 
   imgType:any = [
@@ -80,9 +80,9 @@ export class UploadFileComponent implements OnInit {
   .then((snapshot) => {
     console.log('Uploaded', snapshot.totalBytes, 'bytes.');
     console.log('File metadata:', snapshot.metadata);
-    getDownloadURL(snapshot.ref).then((url) => {
+  getDownloadURL(snapshot.ref).then((url) => {
       this.downloadURL = url;
-      console.log("File Url: "+this.downloadURL);
+      this.newItemEvent.emit(this.downloadURL);
     });
   }).catch((error) => {
     console.error('Upload failed', error);
@@ -90,22 +90,23 @@ export class UploadFileComponent implements OnInit {
 }
   }
 
-  uploadImage(){
-    this.apiService.classifyImage(this.downloadURL).subscribe(async response => {
-      this.type = response
-    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[0])){
-      console.log('Type: ', this.type)
-      console.log('Type2: ', this.imgType[0])
-      this.af.upload("flood/"+Math.random()+this.path, this.path)
-      this.openDialog();
-    }
-    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[1])){
-      console.log('Type: ', this.type)
-      console.log('Type2: ', this.imgType[1])
-      this.af.upload("fire/data"+Math.random()+this.path, this.path)
-      this.openDialog();
-    }
-    })
+  uploadImage() {
+
+    // this.apiService.classifyImage(this.downloadURL).subscribe(async response => {
+    //   this.type = response
+    // if(JSON.stringify(this.type) === JSON.stringify(this.imgType[0])){
+    //   console.log('Type: ', this.type)
+    //   console.log('Type2: ', this.imgType[0])
+    //   this.af.upload("flood/"+Math.random()+this.path, this.path)
+    //   this.openDialog();
+    // }
+    // if(JSON.stringify(this.type) === JSON.stringify(this.imgType[1])){
+    //   console.log('Type: ', this.type)
+    //   console.log('Type2: ', this.imgType[1])
+    //   this.af.upload("fire/data"+Math.random()+this.path, this.path)
+    //   this.openDialog();
+    // }
+    // })
     }
 
 }

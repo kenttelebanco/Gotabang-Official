@@ -25,6 +25,7 @@ import { AlertDialogComponent } from './home/components/alert-dialog/alert-dialo
 import { AlertFileComponent } from './home/components/alert-file/alert-file.component';
 import { TypeFileComponent } from './home/components/type-file/type-file.component';
 import { LevelFileComponent } from './home/components/level-file/level-file.component';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LevelFileComponent } from './home/components/level-file/level-file.comp
     AlertDialogComponent,
     TypeFileComponent,
     LevelFileComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,7 @@ import { LevelFileComponent } from './home/components/level-file/level-file.comp
   ],
   providers: [
     AuthService,
-    FirebaseService
+    FirebaseService,
   ],
   bootstrap: [AppComponent]
 })

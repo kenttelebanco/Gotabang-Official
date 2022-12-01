@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   showFiller = false;
+  public displayImage!: string
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  addItem(newItem: string) {
+    this.displayImage = newItem;
+  }
 }
