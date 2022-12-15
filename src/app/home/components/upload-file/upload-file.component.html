@@ -1,10 +1,13 @@
 <div class="text-center">
-  <div class="upload-card">
-    <img src="https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/icon%2Fupload-icon.png?alt=media&token=94d19bfb-b9bd-4f89-8e9e-ddf7762af0ee">
+  <div class="upload-header">
+    <h1 class="upload-title">Upload Image</h1>
+    <a class="upload-sub">Select Image For Scanning (Availability of PNG/JPG/JPEG)</a>
+  </div>
+
+    <img src="https://cdn3d.iconscout.com/3d/free/thumb/upload-to-cloud-3543022-2969409.png">
     <div class="upload-file">
      <input class="form-control" type="file" (change)="scanImage($event)" accept="*.png*.jpg" multiple="multiple">
      <button mat-flat-button (click)="uploadImage()" [disabled]="lockUpload==true" class="btn btn-success" color="primary">Upload</button>
-    </div>
   </div>
 </div>
 

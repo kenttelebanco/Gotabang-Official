@@ -30,6 +30,8 @@ export class SigninComponent implements OnInit {
   })
 
   registerform = this.fb.group({
+    fname: ['', [Validators.required]],
+    lname: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email,Validators.minLength(6)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -103,10 +105,13 @@ export class SigninComponent implements OnInit {
     this.openRegister = false;
   }
 
-  async register(email:string, password:string) : Promise<void> {
+  async register(fname: string, lname: string, email:string, password:string) : Promise<void> {
     if(this.registerform.valid){
     this.userRegister.email = email;
     this.userRegister.password = password;
+    this.userRegister.fname = fname;
+    this.userRegister.lname = lname;
+
 
     var output = await this.fireB.registerUser(this.userRegister);
     console.log(output);

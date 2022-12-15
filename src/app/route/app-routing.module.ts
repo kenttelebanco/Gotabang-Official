@@ -7,6 +7,7 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SigninComponent } from '../auth/signin/signin.component';
 import { AlertFileComponent } from '../home/components/alert-file/alert-file.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { LevelFileComponent } from '../home/components/level-file/level-file.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component:  HomeComponent, canActivate: [AuthGuard]},
       { path: 'upload2', component:  UploadFileComponent,canActivate: [AuthGuard] },
+      { path: 'level', component:  LevelFileComponent,canActivate: [AuthGuard] },
       { path: 'alert', component:  AlertFileComponent, canActivate: [AuthGuard]}
 
     ]}

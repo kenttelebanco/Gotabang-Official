@@ -10,12 +10,26 @@
     </div>
 </div>
 
-<mat-tab-group animationDuration="0ms">
-    <mat-tab routerLinkActive="active" routerLink="upload2" label="UPLOAD"><upload-file (newItemEvent)="addItem($event)"></upload-file></mat-tab>
-    <mat-tab routerLinkActive="active" routerLink="type" label="TYPE"><type-file [displayImage]="displayImage"></type-file></mat-tab>
-    <mat-tab routerLinkActive="active" routerLink="level" label="LEVEL"><level-file></level-file></mat-tab>
-    <mat-tab routerLinkActive="active" routerLink="scan" label="ALERT"><alert-file></alert-file></mat-tab>
-</mat-tab-group>
+<div class="features">
+  <div class="row">
+    <div class="column">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">center_focus_weak</mat-icon>
+      <h3>Aerial Drone</h3>
+      <p>Utilizes drone camera to capture images for Image Processing.</p>
+    </div>
+    <div class="column">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">memory</mat-icon>
+      <h3>AI Features</h3>
+      <p>Gotabang, which is built with algorithms, offers features such as Image Classifier and Post-Disaster Damage Assessment.</p>
+    </div>
+    <div class="column">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">notifications</mat-icon>
+      <h3>Alert System</h3>
+      <p>Utilizing the location, acquired through an API, it sends the gathered data
+       from damaged areas to the nearest emergency stations.</p>
+    </div>
+  </div>
+</div>
 
 <div class="gotabang-about bg-cover">
   <img src="https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/icon%2Fhome-vector.png?alt=media&token=4f832e1c-9d56-42fe-b6f7-efb737cae1cf">

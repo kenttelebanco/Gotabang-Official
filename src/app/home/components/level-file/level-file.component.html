@@ -1,22 +1,42 @@
-<div class="level-file">
-    <mat-card-content>
-      <img mat-card-image src="https://cdn.dribbble.com/users/709274/screenshots/3450784/water_ball.gif">
-    </mat-card-content>
+<!-- SCAN FILE -->
+<h2 class="scan-header disaster-classification">Disaster Classification and Information</h2>
+<div class="scan-file classification">
+  <div class="card-holder">
+  <p class="card-description">This section handles the classification of disasters and general data. Powered by [Input algorithm name].</p>
+  <mat-card class="scan-card">
+    <mat-card-header>
+      <mat-card-title>Image Data</mat-card-title>
+      <mat-card-subtitle>
+        Verified</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="mat-card-content-scan">
+    <img mat-card-image class="card-image classification" style="background-image:url('{{displayImage}}'); background-size: cover;">
+  </mat-card-content>
+  </mat-card>
+  </div>
 
-  <mat-list>
+  <mat-list class="mat-list-scan">
     <mat-list-item *ngFor="let folder of folders">
-      <mat-card class="info-card warning" *ngIf="folder.info === 'Critical Water Level'">
       <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
-      <div mat-line>{{folder.name}} </div>
+      <div mat-line>{{folder.name}}</div>
       <div mat-line>{{folder.info}}</div>
-    </mat-card>
-
-      <mat-card class="info-card info" *ngIf="folder.info !== 'Critical Water Level'">
-        <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
-        <div mat-line>{{folder.name}} </div>
-        <div mat-line>{{folder.info}}</div>
-    </mat-card>
     </mat-list-item>
-    <mat-divider></mat-divider>
   </mat-list>
-</div>
+  </div>
+
+  <!-- SCAN FILE -->
+  <h2 class="scan-header post-disaster">Post Disaster Damage Assessment</h2>
+  <div class="scan-file post-disaster">
+    <div class="card-holder">
+    <p class="card-description">This section handles the post disaster damage estimation. Powered by [Input algorithm name]. </p>
+    </div>
+    <img class="card-image post-disaster" src="https://docs.breezometer.com/api-documentation/assets/img/heatmap_new_old.79038102.gif">
+
+    <mat-list class="mat-list-scan post-disaster">
+      <mat-list-item *ngFor="let damage of damages" class="post-disaster-list">
+        <mat-icon mat-list-icon>{{damage.icon}}</mat-icon>
+        <div mat-line>{{damage.name}}</div>
+        <div mat-line>{{damage.info}}</div>
+      </mat-list-item>
+    </mat-list>
+    </div>

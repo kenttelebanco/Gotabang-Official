@@ -5,6 +5,8 @@ export interface UserLogin {
 
 export interface UserRegister{
   id?:string;
+  fname:string;
+  lname:string;
   email:string;
   password:string;
 }

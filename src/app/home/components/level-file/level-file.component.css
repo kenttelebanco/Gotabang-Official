@@ -1,16 +1,32 @@
-mat-list{
-  margin: 25px 50px 0px 0px;
-  text-align: center;
-  overflow: hidden;
-  display: flex;
-  padding-bottom: 20%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@500&family=Rubik+Glitch&display=swap');
+
+/* General */
+mat-list-item{
+  background-color: rgb(191, 191, 191);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-mat-card-content{
-  max-height: 300px;
-  height: 500px;
-  margin: 10px 10px;
-  overflow: hidden;
+mat-list-item.post-disaster-list{
+ margin-right: 10px;
+}
+
+.card-holder{
+  width: 68%;
+}
+
+.card-description{
+  margin: 2% 0% 0% 5%;
+  padding: 0% 0% 0% 0%;
+  text-align: left;
+  width: 80%;
+  color: rgb(182, 180, 180);
+}
+
+:host ::ng-deep #mat-tab-content-0-1{
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 :host ::ng-deep #mat-tab-content-0-1{
@@ -19,7 +35,7 @@ mat-card-content{
 }
 
 :host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
-  padding: 0%;
+  padding: 10%;
 }
 
 .info-card {
@@ -40,14 +56,71 @@ mat-card-content{
   height: 80%;
 }
 
-img {
+.mat-list-scan{
+  margin: 7.5% 0% 0% 0%;
+  text-align: left;
+  overflow: hidden;
+  padding-bottom: 20%;
+}
+
+.mat-card-content-scan{
+  width: 500px;
+  height: 200px;
+  margin: 10px 10px;
+  overflow: hidden;
+}
+
+.scan-file{
+  margin: 0% 5% 0% 2%;
+  overflow: hidden;
+  height: 500px;
+}
+.scan-icon {
   width: 75%;
   margin-left: 5%;
 }
 
-.level-file{
-  align-content: center;
-  margin: 0% 5% 0% 17%;
-  overflow: hidden;
-  height: 500px;
+.scan-header{
+  margin: 0% 0% 0% 5.5%;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: large;
 }
+
+.scan-card {
+  margin: 30px 0px 40px 40px;
+  width: 600px;
+  height: 290px;
+}
+
+/* Disaster Classification */
+.scan-header.disaster-classification{
+  margin-top: 5%;
+}
+
+.scan-file.classification{
+  display: flex;
+  align-content: center;
+}
+
+.card-image.classification{
+  height: 90%;
+}
+
+/* Damage Assessment */
+
+.mat-list-scan.post-disaster{
+  display: flex;
+  margin-left: 3%;
+
+}
+
+.scan-file.post-disaster{
+  align-content: center;
+}
+
+.card-image.post-disaster{
+  width: 50%;
+  margin-left: 23%;
+}
+

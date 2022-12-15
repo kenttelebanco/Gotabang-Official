@@ -1,3 +1,15 @@
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 /*CARD*/
 mat-card {
   position: absolute;
@@ -8,11 +20,16 @@ mat-card {
   color: rgb(51, 54, 69);
 }
 
-mat-card.app-login, mat-card.app-register {
+mat-card.app-login{
   width: 30%;
   height: 70%;
 }
 
+mat-card.app-register{
+  width: 30%;
+  height: 80%;
+
+}
 mat-card.app-recover {
   width: 30%;
   height: 45%;
@@ -24,7 +41,7 @@ h2, p {
 
 /*FORM*/
 mat-form-field {
-  padding: 10px 10px;
+  padding: 0px 5px;
   display: block;
   text-decoration: none;
 }
@@ -61,12 +78,12 @@ mat-checkbox{
 }
 
 /*PAGE*/
-.login-page {
-  background: linear-gradient(rgba(37, 36, 36, 0.5), rgba(37, 36, 36, 0.5)), url("https://www.dslrpros.com/media/dslrpros-blog/wp-content/uploads/2018/11/SAR-cliff-stretcher-rescue.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 1000px;
-  display: block ruby;
+
+body{
+  background: linear-gradient(-45deg, #1f1e32, #546270, #1e3932, #43514e);
+  animation: gradient 15s ease infinite;
+
+  height: 100vh;
 }
 
 .submenu{
