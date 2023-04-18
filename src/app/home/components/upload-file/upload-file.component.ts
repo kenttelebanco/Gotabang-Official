@@ -8,6 +8,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { ApiService } from '../api.service';
 import { imageType } from '../imageType';
+import { ThreatDataService } from 'src/app/threat-data.service';
 
 export interface DialogData {
   data: ' ';
@@ -31,6 +32,8 @@ export class UploadFileComponent implements OnInit {
   snapshot!: Observable<any>;
   downloadURL!: string;
   result: any;
+  threat: any;
+
 
   imgType:any = [
     {
@@ -42,20 +45,37 @@ export class UploadFileComponent implements OnInit {
   ]
 
 
-  constructor(public dialog: MatDialog, private af: AngularFireStorage, private apiService:ApiService) {
+  constructor(public dialog: MatDialog, private af: AngularFireStorage, private apiService:ApiService, private threatdata:ThreatDataService) {
   }
 
   ngOnInit(): void {
   }
 
-  openDialog() {
+  openDialog(imgUrl: any, type: string) {
+    console.log(type)
+    console.log(JSON.stringify(this.imgType[1]))
     this.dialog.open(UploadDialogComponent, {
       data: {
         panelClass: 'custom-dialog-container'
       },
     },
     );
-  }
+    if(type === JSON.stringify(this.imgType[1])){
+      this.apiService.classifyFire(imgUrl).subscribe(async response => {
+        this.type = response
+        this.threat = JSON.stringify(this.type)
+        this.threatdata.setThreatClassification(this.threat)
+      })
+    }
+    else{
+      this.apiService.classifyFlood(imgUrl).subscribe(async response => {
+        this.type = response
+        this.threat = JSON.stringify(this.type)
+        this.threatdata.setThreatClassification(this.threat)
+      })
+    }
+    }
+
 
   scanImage($event:any){
     var file = $event.target.files[0];
@@ -92,21 +112,25 @@ export class UploadFileComponent implements OnInit {
 
   uploadImage() {
 
-    // this.apiService.classifyImage(this.downloadURL).subscribe(async response => {
-    //   this.type = response
-    // if(JSON.stringify(this.type) === JSON.stringify(this.imgType[0])){
-    //   console.log('Type: ', this.type)
-    //   console.log('Type2: ', this.imgType[0])
-    //   this.af.upload("flood/"+Math.random()+this.path, this.path)
-    //   this.openDialog();
-    // }
-    // if(JSON.stringify(this.type) === JSON.stringify(this.imgType[1])){
-    //   console.log('Type: ', this.type)
-    //   console.log('Type2: ', this.imgType[1])
-    //   this.af.upload("fire/data"+Math.random()+this.path, this.path)
-    //   this.openDialog();
-    // }
-    // })
+    this.apiService.classifyImage(this.downloadURL).subscribe(async response => {
+      this.type = response
+    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[0])){
+      console.log('Type: ', this.type)
+      console.log('Type2: ', this.imgType[0])
+      this.af.upload("flood/"+Math.random()+this.path, this.path)
+      this.threatdata.setImage(this.downloadURL)
+      this.threatdata.setDisasterClassification(JSON.stringify(this.type))
+      this.openDialog(this.downloadURL, JSON.stringify(this.type));
+    }
+    if(JSON.stringify(this.type) === JSON.stringify(this.imgType[1])){
+      console.log('Type: ', this.type)
+      console.log('Type2: ', this.imgType[1])
+      this.af.upload("fire/data"+Math.random()+this.path, this.path)
+      this.threatdata.setImage(this.downloadURL)
+      this.threatdata.setDisasterClassification(JSON.stringify(this.type))
+      this.openDialog(this.downloadURL, JSON.stringify(this.type));
+    }
+    })
     }
 
 }

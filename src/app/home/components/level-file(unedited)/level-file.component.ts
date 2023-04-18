@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Section } from 'src/app/shared/model/section';
-import { ThreatDataService } from 'src/app/threat-data.service';
 
 @Component({
   selector: 'level-file',
@@ -9,6 +8,7 @@ import { ThreatDataService } from 'src/app/threat-data.service';
 })
 export class LevelFileComponent implements OnInit {
   @Input() displayImage = '';
+
   folders: Section[] = [
     {
       icon: 'warning',
@@ -49,41 +49,10 @@ export class LevelFileComponent implements OnInit {
       info: 'Created: 2022-08-18T04:57:39.056Z',
     },
   ];
-  constructor(private threatData:ThreatDataService) {
+  constructor() {
    }
 
   ngOnInit(): void {
-    this.threatData.disasterClassification.subscribe(disasterClassification => {
-      // Parse the JSON string to an object
-      const classificationObj = JSON.parse(disasterClassification);
-    
-      // Get the value of the 'Type' property
-      const disasterType = classificationObj.Type;
-    
-      // Do something with the disaster type
-      console.log('Disaster type:', disasterType); 
-
-      this.folders[0].info = disasterType;
-    });
-  
-    this.threatData.threatClassification.subscribe(threatClassification => {
-      // Parse the JSON string to an object
-      const classificationObj = JSON.parse(threatClassification);
-    
-      // Get the value of the 'Type' property
-      const threatType = classificationObj.Type;
-    
-      // Do something with the disaster type
-      console.log('Disaster type:', threatType); 
-      this.folders[1].info = threatType.toUpperCase();
-    });
-
-    this.threatData.image.subscribe(image => {
-      console.log(image);
-      this.displayImage = image;
-    })
   }
-
-
 
 }

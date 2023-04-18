@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Section } from 'src/app/shared/model/section';
+import { ThreatDataService } from 'src/app/threat-data.service';
 
 @Component({
   selector: 'type-file',
@@ -7,7 +8,6 @@ import { Section } from 'src/app/shared/model/section';
   styleUrls: ['./type-file.component.css']
 })
 export class TypeFileComponent implements OnInit {
-
   @Input() displayImage = '';
   folders: Section[] = [
     {
@@ -35,7 +35,8 @@ export class TypeFileComponent implements OnInit {
   constructor() {
   }
   ngOnInit(): void {
-
   }
+
+
 }
 

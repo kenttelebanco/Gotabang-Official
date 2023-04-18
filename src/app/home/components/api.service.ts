@@ -6,7 +6,7 @@ import { imageType } from './imageType';
   providedIn: 'root'
 })
 export class ApiService {
-  url = 'https://6229-114-108-244-90.ngrok.io/';
+  url = 'http://127.0.0.1:7777/';
   
     constructor(private http: HttpClient) { }
   
@@ -19,6 +19,14 @@ export class ApiService {
 
   classifyImage(imgUrl:any){
     return this.http.get<imageType[]>(this.url+`?image=${imgUrl}`)
+  }
+
+  classifyFire(imgUrl:any){
+    return this.http.get<imageType[]>(this.url+`fire?image=${imgUrl}`)
+  }
+
+  classifyFlood(imgUrl:any){
+    return this.http.get<imageType[]>(this.url+`flood?image=${imgUrl}`)
   }
 
   
