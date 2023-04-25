@@ -1,13 +1,29 @@
 <div class="text-center">
   <div class="upload-header">
-    <h1 class="upload-title">Upload Image</h1>
-    <a class="upload-sub">Select Image For Scanning (Availability of PNG/JPG/JPEG)</a>
+    <h1 class="upload-title">Retrieve Image</h1>
+    <a class="upload-sub">This Section Ensures Images For Scanning (Availability of PNG/JPG/JPEG)</a>
   </div>
 
-    <img src="https://cdn3d.iconscout.com/3d/free/thumb/upload-to-cloud-3543022-2969409.png">
+  <div class="upload-section">
+  <div class="upload-firebase">
+    <h4 class="upload-firebase-title">Upload From Local Storage</h4>
+    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/file-8334581-6648107.png">
     <div class="upload-file">
      <input class="form-control" type="file" (change)="scanImage($event)" accept="*.png*.jpg" multiple="multiple">
-     <button mat-flat-button (click)="uploadImage()" [disabled]="lockUpload==true" class="btn btn-success" color="primary">Upload</button>
+     <!-- <button mat-flat-button (click)="retrieveImage()" class="btn btn-success" color="primary">Retrieve</button> -->
+     <button mat-flat-button (click)="uploadImage()" [disabled]="lockUploadLocal==true" class="btn btn-success" color="primary">Upload</button>
   </div>
+</div>
+
+  <div class="upload-firebase">
+    <h4 class="upload-firebase-title">Retrieve From Database</h4>
+    <img src="https://cdn3d.iconscout.com/3d/free/thumb/upload-to-cloud-3543022-2969409.png">
+    <div class="upload-file">
+     <!-- <input class="form-control" type="file" (change)="retrieveImage()" accept="*.png*.jpg" multiple="multiple"> -->
+     <button mat-flat-button (click)="retrieveImage()" class="btn btn-success" color="primary">Retrieve</button>
+     <button mat-flat-button (click)="uploadImage()" [disabled]="lockUploadDatabase==true" class="btn btn-success" color="primary">Upload</button>
+  </div>
+</div>
+</div>
 </div>
 

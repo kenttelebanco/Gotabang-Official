@@ -13,12 +13,12 @@ export class LevelFileComponent implements OnInit {
     {
       icon: 'warning',
       name: 'Disaster Classification:',
-      info: 'Flood',
+      info: 'N/A',
     },
     {
       icon: 'warning',
       name: 'Disaster Level:',
-      info: 'Critical Level',
+      info: 'N/A',
     },
     {
       icon: 'calendar_today',
@@ -49,39 +49,42 @@ export class LevelFileComponent implements OnInit {
       info: 'Created: 2022-08-18T04:57:39.056Z',
     },
   ];
-  constructor(private threatData:ThreatDataService) {
-   }
+  constructor(private threatData:ThreatDataService) { }
 
   ngOnInit(): void {
+
     this.threatData.disasterClassification.subscribe(disasterClassification => {
       // Parse the JSON string to an object
       const classificationObj = JSON.parse(disasterClassification);
-    
+
       // Get the value of the 'Type' property
       const disasterType = classificationObj.Type;
-    
+
       // Do something with the disaster type
-      console.log('Disaster type:', disasterType); 
+      console.log('Disaster type:', disasterType);
 
       this.folders[0].info = disasterType;
     });
-  
+
     this.threatData.threatClassification.subscribe(threatClassification => {
       // Parse the JSON string to an object
       const classificationObj = JSON.parse(threatClassification);
-    
+
       // Get the value of the 'Type' property
       const threatType = classificationObj.Type;
-    
+
       // Do something with the disaster type
-      console.log('Disaster type:', threatType); 
+      console.log('Disaster type:', threatType);
       this.folders[1].info = threatType.toUpperCase();
     });
 
     this.threatData.image.subscribe(image => {
-      console.log(image);
+      console.log("image: ", image);
       this.displayImage = image;
+
+     
     })
+    // this.displayImage = this.retrieveImage.downloadURL;
   }
 
 

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +17,6 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { FirebaseService } from './auth/firebase.service';
 import { AlertDialogComponent } from './home/components/alert-dialog/alert-dialog.component';
@@ -26,6 +24,8 @@ import { AlertFileComponent } from './home/components/alert-file/alert-file.comp
 import { TypeFileComponent } from './home/components/type-file/type-file.component';
 import { LevelFileComponent } from './home/components/level-file/level-file.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [

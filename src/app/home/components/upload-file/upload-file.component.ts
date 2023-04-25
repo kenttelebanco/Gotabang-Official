@@ -9,6 +9,7 @@ import 'firebase/compat/firestore';
 import { ApiService } from '../api.service';
 import { imageType } from '../imageType';
 import { ThreatDataService } from 'src/app/threat-data.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 export interface DialogData {
   data: ' ';
@@ -25,7 +26,9 @@ export class UploadFileComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<string>();
   type : imageType[] = [];
   path!: String;
-  lockUpload= true;
+  latestImage!: String;
+  lockUploadLocal= true;
+  lockUploadDatabase= true;
   task!: AngularFireUploadTask;
   taskRef!: AngularFireStorageReference;
   percentage!: Observable<number>;
@@ -45,15 +48,14 @@ export class UploadFileComponent implements OnInit {
   ]
 
 
-  constructor(public dialog: MatDialog, private af: AngularFireStorage, private apiService:ApiService, private threatdata:ThreatDataService) {
+  constructor(public dialog: MatDialog, private af: AngularFireStorage,
+    private apiService:ApiService, private threatdata:ThreatDataService,  private db: AngularFireDatabase) {
   }
 
   ngOnInit(): void {
   }
 
   openDialog(imgUrl: any, type: string) {
-    console.log(type)
-    console.log(JSON.stringify(this.imgType[1]))
     this.dialog.open(UploadDialogComponent, {
       data: {
         panelClass: 'custom-dialog-container'
@@ -77,13 +79,13 @@ export class UploadFileComponent implements OnInit {
     }
 
 
-  scanImage($event:any){
+  async scanImage($event:any){
     var file = $event.target.files[0];
     this.path = file;
     if (file!.type.split('/')[0] !== 'image') {
       console.error('unsupported file type');
       alert('Invalid Upload Format!')
-      this.lockUpload=true;
+      this.lockUploadLocal=true;
       return;}
     else {
     var storage = getStorage();
@@ -94,8 +96,23 @@ export class UploadFileComponent implements OnInit {
       }
     };
 
+  //Empty folder before uploading new image
+  const folderRef = this.af.refFromURL('gs://gotabang.appspot.com/images');
+  folderRef.listAll().subscribe(result => {
+    // For each file, delete it
+    result.items.forEach(item => {
+      item.delete().then(() => {
+        console.log('File deleted successfully');
+      }).catch(error => {
+        console.log('Error deleting file:', error);
+      });
+    });
+  });
+
+
+  //Select File from Local Storage
   var imageRef = ref(storage, 'images/' + file.name);
-  this.lockUpload=false;
+  this.lockUploadLocal=false;
   uploadBytesResumable(imageRef, file, metadata)
   .then((snapshot) => {
     console.log('Uploaded', snapshot.totalBytes, 'bytes.');
@@ -131,6 +148,24 @@ export class UploadFileComponent implements OnInit {
       this.openDialog(this.downloadURL, JSON.stringify(this.type));
     }
     })
+    }
+
+    retrieveImage(){
+      const storageRef = this.af.refFromURL('gs://gotabang.appspot.com/images');
+
+      storageRef.listAll().subscribe((res) => {
+        const latestImageRef = res.items[res.items.length - 1];
+        latestImageRef.getDownloadURL().then((url: any) => {
+          if(url){
+          this.downloadURL = url;
+          this.lockUploadDatabase=false;
+          this.newItemEvent.emit(this.downloadURL);
+          }
+          console.log(url);
+        });
+      });
+
+
     }
 
 }
