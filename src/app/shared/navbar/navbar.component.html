@@ -5,7 +5,8 @@
       <a class="nav-user">Welcome<br><b>{{displayName}}</b></a>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="dashboard"><mat-icon>home</mat-icon> Dashboard</a>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="upload2"><mat-icon>cloud_download</mat-icon> Retrieve</a>
-      <a class="nav-button" mat-button routerLinkActive="active" routerLink="level"><mat-icon> insert_chart_outlined</mat-icon> Scan</a>
+      <a class="nav-button" mat-button routerLinkActive="active" routerLink="level"><mat-icon> insert_chart_outlined</mat-icon>Classify</a>
+      <a class="nav-button" mat-button routerLinkActive="active" routerLink="post-disaster"><mat-icon>layers</mat-icon>Post Assessment</a>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="alert"><mat-icon>error_outline</mat-icon> Alert</a>
     </div>
   </mat-drawer>
@@ -16,7 +17,7 @@
         <div>
           <a mat-button>Home</a>
           <a mat-button>Contacts</a>
-          <a mat-button>History</a>
+          <a mat-button>Statistics</a>
           <a mat-button [matMenuTriggerFor]="menu">{{displayName}}</a>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Profile</button>

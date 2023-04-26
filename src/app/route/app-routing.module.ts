@@ -8,6 +8,7 @@ import { SigninComponent } from '../auth/signin/signin.component';
 import { AlertFileComponent } from '../home/components/alert-file/alert-file.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { LevelFileComponent } from '../home/components/level-file/level-file.component';
+import { PostDisasterComponent } from '../home/components/post-disaster/post-disaster.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'dashboard', component:  HomeComponent, canActivate: [AuthGuard]},
       { path: 'upload2', component:  UploadFileComponent,canActivate: [AuthGuard] },
       { path: 'level', component:  LevelFileComponent,canActivate: [AuthGuard] },
-      { path: 'alert', component:  AlertFileComponent, canActivate: [AuthGuard]}
+      { path: 'alert', component:  AlertFileComponent, canActivate: [AuthGuard]},
+      { path: 'post-disaster', component:  PostDisasterComponent, canActivate: [AuthGuard]}
 
     ]}
   ];

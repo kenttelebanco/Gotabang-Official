@@ -6,6 +6,10 @@ img{
   align-items: center;
 }
 
+img.post-disaster{
+  width: 17rem;
+}
+
 .btn{
   margin: 0px 10px;
 }

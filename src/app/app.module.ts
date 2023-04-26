@@ -26,6 +26,7 @@ import { LevelFileComponent } from './home/components/level-file/level-file.comp
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { PostDisasterComponent } from './home/components/post-disaster/post-disaster.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     TypeFileComponent,
     LevelFileComponent,
     ToolbarComponent,
+    PostDisasterComponent,
   ],
   imports: [
     BrowserModule,

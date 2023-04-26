@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LevelFileComponent } from './level-file.component';
+import { PostDisasterComponent } from './post-disaster.component';
 
-describe('LevelFileComponent', () => {
-  let component: LevelFileComponent;
-  let fixture: ComponentFixture<LevelFileComponent>;
+describe('PostDisasterComponent', () => {
+  let component: PostDisasterComponent;
+  let fixture: ComponentFixture<PostDisasterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LevelFileComponent ]
+      declarations: [ PostDisasterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LevelFileComponent);
+    fixture = TestBed.createComponent(PostDisasterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
