@@ -3,6 +3,7 @@
     <img src="https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/icon%2Fgotabang-newlogo.png?alt=media&token=48213924-5533-4363-adfa-62fccebbac5d">
     <div class="nav-buttons">
       <a class="nav-user">Welcome<br><b>{{displayName}}</b></a>
+      <mat-slide-toggle class="toggle" (change)="onToggleChange()">{{displayName}}</mat-slide-toggle>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="dashboard"><mat-icon>home</mat-icon> Dashboard</a>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="upload2"><mat-icon>cloud_download</mat-icon> Retrieve</a>
       <a class="nav-button" mat-button routerLinkActive="active" routerLink="level"><mat-icon> insert_chart_outlined</mat-icon>Classify</a>

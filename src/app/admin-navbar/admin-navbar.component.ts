@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-admin-navbar',
+  templateUrl: './admin-navbar.component.html',
+  styleUrls: ['./admin-navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class AdminNavbarComponent {
   showFiller = false;
-  displayName = 'User';
+  displayName = 'Admin';
   
 
   onToggleChange() {
@@ -22,11 +21,4 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor(private router: Router){}
-  
-
-
-  ngOnInit(): void { 
-  }
-
-
 }

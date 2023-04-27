@@ -1,0 +1,24 @@
+<mat-drawer-container class="side-container">
+    <mat-drawer class="side-nav" mode="side" opened>
+      <img src="https://firebasestorage.googleapis.com/v0/b/gotabang.appspot.com/o/icon%2Fgotabang-newlogo.png?alt=media&token=48213924-5533-4363-adfa-62fccebbac5d">
+      <div class="nav-buttons">
+        <a class="nav-user">Welcome,<br><b>{{displayName}}</b></a>
+        <mat-slide-toggle class="toggle" (change)="onToggleChange()">{{displayName}}</mat-slide-toggle>
+        <a class="nav-button" mat-button routerLinkActive="active" routerLink="dashboard"><mat-icon>home</mat-icon> Dashboard</a>
+        <a class="nav-button" mat-button routerLinkActive="active" routerLink="upload2"><mat-icon>cloud_download</mat-icon> Dataset</a>
+        <a class="nav-button" mat-button routerLinkActive="active" routerLink="level"><mat-icon> insert_chart_outlined</mat-icon>Statistics</a>
+        <a class="nav-button" mat-button routerLinkActive="active" routerLink="post-disaster"><mat-icon>layers</mat-icon>Retrain </a>
+        <a class="nav-button" mat-button routerLinkActive="active" routerLink="alert"><mat-icon>error_outline</mat-icon> Alert</a>
+      </div>
+    </mat-drawer>
+
+    <mat-drawer-content>
+  <router-outlet></router-outlet>
+  </mat-drawer-content>
+  </mat-drawer-container>
+  <app-toolbar></app-toolbar>
+  
+  
+  
+  
+  
