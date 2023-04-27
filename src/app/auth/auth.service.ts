@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,22 @@ export class AuthService {
     )
 }
 
-  isAuthenticated(){
-    return this.isLoggedIn;
-  }
+login(email: string, password: string) {
+  console.log('inside')
+  this.firebaseAuth.signInWithEmailAndPassword(email, password)
+  .then(value => {
+    console.log('Nice, it worked!');
+    this.router.navigateByUrl('/profile');
+  })
+  .catch(err => {
+    console.log('Something went wrong: ', err.message);
+  });
+}
+
+logout() {
+  this.firebaseAuth.signOut().then(() => {
+    this.router.navigate(['/']);
+  });
+}
 
 }

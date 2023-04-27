@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 import { HttpClientModule } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +21,8 @@ import { environment } from '../environments/environment';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from "./shared/services/auth.service";
+// import { AuthService } from './auth/auth.service';
 import { FirebaseService } from './auth/firebase.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AlertDialogComponent } from './home/components/alert-dialog/alert-dialog.component';
@@ -49,9 +55,12 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
     AdminNavbarComponent,
   ],
   imports: [
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     BrowserModule,
     MatSlideToggleModule,
-    MatDividerModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     AngularModule,
     HttpClientModule,
